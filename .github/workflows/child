@@ -1,1 +1,8 @@
-
+name: Parent Pipeline
+on: push
+jobs: 
+  build-test-run:
+    uses: ./.github/workflows/Parents.yml
+    secrets:
+      DATABASE_USERNAME: ${{ secrets.DB_USER}}
+      DATABASE_PASSWORD: ${{ secrets.DB_PASS}}
