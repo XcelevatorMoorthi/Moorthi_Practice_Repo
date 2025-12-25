@@ -13,7 +13,7 @@ jobs:
       - name: Use DB credentials safely
         run: |
           echo "Using database credentials."
-          export ACCESS_NAME=${{ secrets.DATABASE_USERNAME }}
+          export ACESS_NAME=${{ secrets.DATABASE_USERNAME }}
           export DB_PASS=${{ secrets.DATABASE_PASSWORD }}
       - name: Use DB credentials
         run: |
