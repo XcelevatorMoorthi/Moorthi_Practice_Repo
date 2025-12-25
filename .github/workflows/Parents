@@ -1,1 +1,20 @@
-
+name: Child Workflow - DB Secure Job
+on:
+  workflow_call:
+    secrets:
+      DATABASE_USERNAME:
+        required: true
+      DATABASE_PASSWORD:
+        required: true
+jobs:
+  do-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use DB credentials safely
+        run: |
+          echo "Using database credentials."
+          export ACCESS_NAME=${{ secrets.DATABASE_USERNAME }}
+          export DB_PASS=${{ secrets.DATABASE_PASSWORD }}
+      - name: Use DB credentials
+        run: |
+          echo "Using database credentials."
