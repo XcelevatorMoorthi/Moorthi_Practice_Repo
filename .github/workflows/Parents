@@ -1,5 +1,5 @@
 name: Child Workflow - DB Secure Job
-on:
+on:[push]
   workflow_call:
     secrets:
       DATABASE_USERNAME:
