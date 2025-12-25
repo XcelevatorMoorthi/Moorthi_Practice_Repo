@@ -1,35 +1,15 @@
-name: Assignment-pipeline
+name: Parent CI Pipeline
 
-on: [workflow_dispatch]
+on: [push]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Validate Stage
-        run: |
-          echo " Validate stage."
+      - uses: actions/checkout@v4
 
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Scan
-        run: |
-          echo "Scan stage."
+      - name: Setup Java (Child Action)
+        uses: ./.github/actions/setup-java
 
-  deploy-pre-request:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Code Scanning
-        run: |
-          echo "Scanning stage."
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: deploy-pre-request
-    steps:
-      - name: Deploy
-        run: |
-          echo "Deploy stage."
+      - name: Build Project (Child Action)
+        uses: ./.github/actions/maven-build
