@@ -1,0 +1,10 @@
+name: Setup Java
+description: Install Java
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-java@v4
+      with:
+        distribution: "temurin"
+        java-version: "24"
